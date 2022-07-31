@@ -1,4 +1,4 @@
-.gpt3__footer {
+.site__footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,21 +7,21 @@
     background: var(--color-footer);
 }
 
-.gpt3__footer-heading {
+.site__footer-heading {
     width: 100%;
     text-align: center;
 
     margin-bottom: 3rem;
 }
 
-.gpt3__footer-heading h1 {
+.site__footer-heading h1 {
     font-family: var(--font-family);
     font-weight: 800;
     font-size: 64px;
     line-height: 75px;
 }
 
-.gpt3__footer-links {
+.site__footer-links {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -32,18 +32,18 @@
     text-align: left;
 }
 
-.gpt3__footer-links div {
+.site__footer-links div {
     width: 250px;
     margin: 1rem;
 }
 
-.gpt3__footer-links_div {
+.site__footer-links_div {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
 }
 
-.gpt3__footer-links_div h4 {
+.site__footer-links_div h4 {
     font-size: 14px;
     line-height: 17px;
     font-family: var(--font-family);
@@ -52,7 +52,7 @@
     margin-bottom: 0.9rem;
 }
 
-.gpt3__footer-links_div p {
+.site__footer-links_div p {
     font-size: 12px;
     line-height: 15px;
     font-family: var(--font-family);
@@ -63,26 +63,26 @@
 }
 
 @media screen and (max-width: 850px) {
-    .gpt3__footer-heading h1 {
+    .site__footer-heading h1 {
         font-size: 44px;
         line-height: 50px;
     }
 }
 
 @media screen and (max-width: 550px) {
-    .gpt3__footer-heading h1 {
+    .site__footer-heading h1 {
         font-size: 34px;
         line-height: 42px;
     }
 
-    .gpt3__footer-links div {
+    .site__footer-links div {
         margin: 1rem 0;
     }
 
 }
 
 @media screen and (max-width: 400px) {
-    .gpt3__footer-heading h1 {
+    .site__footer-heading h1 {
         font-size: 27px;
         line-height: 38px;
     }

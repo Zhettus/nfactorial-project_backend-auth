@@ -15,6 +15,8 @@ app.use(cors());
 app.use('/api', router);
 app.use(errorMiddleware);
 
+app.use('/api', require('./router/JobRouter'));
+
 const start = async () => {
     try {
         await mongoose.connect(process.env.DB_URL, {
