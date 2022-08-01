@@ -25,7 +25,7 @@ const Navbar = () => {
           <button type="button"
             onClick={() => console.log('sign up')}>Sign up</button>
         </Link>
-      </div>
+      </div> 
 
       <div className="site__navbar-log">
         <Link to="/Login">

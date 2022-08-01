@@ -1,30 +1,51 @@
 import "./login.css"
-// import * as yup from "yup";
 import { ErrorMessage, Formik, Form, Field } from "formik";
-import axios from "axios";
 // import Img from "../Assets/result.svg"
 import { Link } from 'react-router-dom';
+// import {login} from '../../http/index';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import Portal from "../../../services/portal";
+
+
 
 function Login({logado=false}) {
-  const handleLogin = (values) => {
-    axios.post("http://localhost:7000/api/login", {
-      email: values.email,
-      password: values.password,
-    }).then((response) => {
+  const navigate = useNavigate()
 
-      const page = response.data;
+  const[itemToDo,setItemToDo]=useState("")
+  
+  const handleChangeItem = (event) => { // принимает событие (автоматически) 
+    setItemToDo(event.target.value); // меняет значение инпута на то что пишем
+  }; 
+  console.log(itemToDo) 
 
-      if (page === true) {
-        localStorage.setItem('@user', JSON.stringify(response.config.data));
-        window.location.reload();
-      } else {
-        alert(response.data.msg);
-      }
+  // const [data, setData] = useState({name: "", email: "", password: ""});
 
-    });
+  // const handleChangeItem = ({currentTarget: input}) => {
+  //   setData({...data, [input.name]: input.value});
+  // };
+
+
+  // const handleSubmit = (e) => {
+  //   // e.preventDefault();
+  //   login(data.name, data.email, data.password).then((response) => {
+  //     console.log("response ====>", response)
+  //     navigate("/Teacher")
+  //   })
+  // }
+
+  const handleSubmit = async (data) => {
+    const response = await Portal.login(data);
+    console.log("token ====>", response)
+    // localStorage.setItem('token', response.accessToken)
+    // localStorage.setItem('refreshToken', response.refreshToken)
+    // localStorage.setItem('name', JSON.stringify(response.user))
+    
+
+    navigate("/Teacher")
   };
-
-
+ 
   return (
     <div className="body">
       <div className="left-login">
@@ -46,14 +67,15 @@ function Login({logado=false}) {
           <h1>LOGIN</h1>
           <Formik
             initialValues={{}}
-            onSubmit={handleLogin}
-            // validationSchema={validationsLogin}
+            onSubmit={handleSubmit}
           >
             <Form className="login-form">
               <div className="form-group">
                 <label form="email">Email</label>
 
-                <Field name="email" type='email' className="form-field" placeholder="Enter your email" />
+                <Field name="email" type='email'  className="form-field" placeholder="Enter your email" 
+                  required
+                  onChange={handleChangeItem}  />
 
                 <ErrorMessage
                   component="span"
@@ -65,7 +87,9 @@ function Login({logado=false}) {
 
               <div className="form-group">
                 <label form="email">Password</label>
-                <Field name="password" type='password' className="form-field" placeholder="Enter your password" />
+                <Field name="password" type='password' className="form-field" placeholder="Enter your password"
+                  required
+                  onChange={handleChangeItem} />
 
                 <ErrorMessage
                   component="span"

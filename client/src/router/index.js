@@ -1,18 +1,37 @@
-import About from "../pages/About";
 import Login from "../pages/Login";
-import PostIdPage from "../pages/PostIdPage";
-import Posts from "../pages/Posts";
-import Error from '../pages/Error'
-import Graphs from "../pages/Graphs";
-import { Navigate } from "react-router-dom";
+import Home from '../pages/homepage/Home';
+import Login from '../pages/Auth/login/Login';
+import Register from '../pages/Auth/register/Register';
+import Teacher from '../pages/teacher/Teacher';
+import Parent from '../pages/parent/Parent';
+import { Component } from "react";
+import { HOME_ROUTE, LOGIN_ROUTE, PARENT_ROUTE, REGISTER_ROUTE, TEACHER_ROUTE } from "../utils/consts";
+
 
 export const privateRoutes = [
-    {path: '/about', element: <About/>, exact: true},
-    {path: '/posts', element: <Posts/>, exact: true},
-    {path: '/posts/:id', element: <PostIdPage/>, exact: true},
-    {path: '/graphs', element: <Graphs/>, exact: true}
+    {
+        path: TEACHER_ROUTE,
+        Component: Teacher
+    },
+    {
+        path: PARENT_ROUTE,
+        Component: Parent
+    }
+
 ]
 export const publicRoutes = [
-    // {path: '*', element: <Navigate to={<Error/>}/>, exact: false},
-    {path: '/*', element: <Login/>, exact: false}
+    {
+        path: HOME_ROUTE,
+        Component: Home
+    },
+    {
+        path: LOGIN_ROUTE,
+        Component: Login
+    },
+    {
+        path: REGISTER_ROUTE,
+        Component: Register
+    },
+
+
 ]

@@ -27,7 +27,7 @@ export default class Portal
 
     static async register(user)
     {
-        try{
+        try{ 
             const response = await axios({  
                 method: 'post',
                 url: 'http://localhost:7000/api/registration',

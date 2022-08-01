@@ -1,25 +1,26 @@
 import "./register.css"
 import React, {useState} from 'react';
-import { ErrorMessage, Formik, Form, Field, useFormik } from "formik";
+import { ErrorMessage, Formik, Form, Field } from "formik";
 import { Link } from 'react-router-dom';
-import {register} from "../../http/auth";
+// import {register} from "../../http/auth";
 import { useNavigate } from "react-router-dom";
+
+import Portal from "../../../services/portal";
 // import {useForm} from 'react-hook-form';
 
 
 function Register({logedIn=false}) {
   const navigate = useNavigate()
 
-  const [data, setData] = useState({name: "", email: "", password: ""});
+  const [data, setData] = useState({name: "", email: "", password: "", role: ""});
 
   const handleChangeItem = ({currentTarget: input}) => {
     setData({...data, [input.name]: input.value});
   };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    register(data.name, data.email, data.password).then((response) => {
+  const handleSubmit = async (data) => {
+    const token = await Portal.register(data.name, data.email, data.password, data.role).then((response) => {
       console.log("response ====>", response)
       navigate("/Teacher")
     })
@@ -51,7 +52,7 @@ function Register({logedIn=false}) {
                   <label form="name">User name</label>
   
                   <Field name="name" type='text' className="form-field" placeholder="Enter your user name"           
-                  value={data.name} required
+                  required
                   onChange={handleChangeItem} />
   
                   <ErrorMessage
@@ -65,7 +66,7 @@ function Register({logedIn=false}) {
                   <label form="email">Email</label>
   
                   <Field name="email" type='email'  className="form-field" placeholder="Enter your email" 
-                  value={data.email} required
+                   required
                   onChange={handleChangeItem}  />
   
                   <ErrorMessage
@@ -78,7 +79,7 @@ function Register({logedIn=false}) {
                 <div className="form-group">
                   <label form="email">Password</label>
                   <Field name="password" type='password' className="form-field" placeholder="Enter your password"
-                  value={data.password} required
+                  required
                   onChange={handleChangeItem} />
   
                   <ErrorMessage
@@ -90,7 +91,7 @@ function Register({logedIn=false}) {
   
                 <div className="form-grooup">
                     <label form="role">Please choose your role: </label>
-                    <Field name="role" as="select">
+                    <Field name="role" as="select" className="form-field" required onChange={handleChangeItem}>
                       <option value="red">Teacher</option>
                       <option value="green">Parent</option>
                     </Field>

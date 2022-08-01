@@ -1,0 +1,7 @@
+export const LOGIN_ROUTE = '/Login'
+export const REGISTER_ROUTE = '/Register'
+export const HOME_ROUTE = '/'
+export const TEACHER_ROUTE = '/Teacher'
+export const PARENT_ROUTE = '/Parent'
+export const JOB_ROUTE = '/Job'
+export const FORUM_ROUTE = '/Forum'

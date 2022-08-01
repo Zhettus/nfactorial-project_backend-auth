@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useFormik } from "formik";
-import Portal from '../services/portal';
+import Portal from '../../services/portal';
 import Login from "./login/Login";
 import Register from "./register/Register";
 

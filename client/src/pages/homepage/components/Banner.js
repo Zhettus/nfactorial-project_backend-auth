@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import inclusive from "../../assets/inclusive.png";
+import inclusive from "../assets/img/inclusive.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import TrackVisibility from 'react-on-screen';
-import './header.css'
 
-export const Header = () => {
+
+
+
+export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Helps", "Gives hope", "And something" ];
+  const toRotate = [ "Inclusive education", "Helps", "Gives hopes" ];
   const period = 2000;
 
   useEffect(() => {
@@ -54,9 +56,9 @@ export const Header = () => {
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to inclusive education website</span>
-                <h1>{`Inclusive education`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
+              <div className={isVisible ? "animate__animated animate__fadeIn" : ""} id='col-xl-7 col-md-6 col-12'>
+                <span className="tagline">Welcome to portal</span>
+                <h1>{`It is`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Inclusive education", "Helps", "Gives hopea" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                   <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
@@ -65,7 +67,7 @@ export const Header = () => {
           <Col xs={12} md={6} xl={5}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""} id='image'>
+                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
                   <img src={inclusive} alt="Header Img"/>
                 </div>}
             </TrackVisibility>
@@ -75,25 +77,3 @@ export const Header = () => {
     </section>
   )
 }
-
-
-
-
-// import React from 'react';
-// import im from '../../assets/someimage.png';
-// import './header.css';
-
-// const Header = () => (
-//   <div className="site__header section__padding" id="home">
-//     <div className="site__header-content">
-//       <h1 className="gradient__text">Cool Headline about Inclusive Education</h1>
-//       <p> Cool text about importance of inclusive education blalalalala</p>
-//     </div>
-
-//     <div className="site__header-image">
-//       <img src={im} />
-//     </div>
-//   </div>
-// );
-
-// export default Header;
